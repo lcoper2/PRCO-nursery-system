@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.5" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
+    <Property name="resizable" type="boolean" value="false"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+  </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowClosing" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowClosing"/>
+  </Events>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="jLabelNotes" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="280" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jScrollPaneNotesChild" min="-2" pref="308" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jLabelCancel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jLabelAddChild" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabelFirstName" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelSurname" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelKnownAs" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelPosFamily" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelSex" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelDOB" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="jTextFieldSurname" alignment="0" pref="156" max="32767" attributes="0"/>
+                              <Component id="jTextFieldSex" alignment="0" pref="100" max="32767" attributes="0"/>
+                              <Component id="jTextFieldPosFamily" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
+                              <Component id="jTextFieldFirstName" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jTextFieldKnownAs" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="jTextFieldDateOfBirth" min="-2" pref="100" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabelEthnicOrigin" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelReligion" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelLanguages" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jTextFieldImmunisations" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldMedicalConditions" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldLanguages" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldDietaryNeeds" min="-2" pref="258" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldReligion" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldEthnicOrigin" alignment="0" min="-2" pref="186" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Component id="jLabelMedicalConditions" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelImmunisations" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelDietaryNeeds" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="198" max="-2" attributes="0"/>
+              <Component id="jLabelHeading" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="198" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jLabelHeading" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabelReligion" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldReligion" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabelEthnicOrigin" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldEthnicOrigin" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabelLanguages" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldLanguages" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabelMedicalConditions" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldMedicalConditions" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabelImmunisations" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldImmunisations" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabelDietaryNeeds" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldDietaryNeeds" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jTextFieldFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jTextFieldSurname" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelSurname" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jTextFieldKnownAs" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelKnownAs" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabelDOB" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldDateOfBirth" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabelSex" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldSex" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabelPosFamily" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldPosFamily" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="jLabelNotes" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jScrollPaneNotesChild" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="jLabelAddChild" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelCancel" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="jLabelDOB">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Date Of Birth"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelSex">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Sex"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelDietaryNeeds">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Dietary Needs"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelSurname">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Surname"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelNotes">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Notes"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldSurname">
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldDietaryNeeds">
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldFirstName">
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldMedicalConditions">
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldImmunisations">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelFirstName">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="First Name"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelKnownAs">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Known As"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldSex">
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldKnownAs">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelPosFamily">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Position In Family"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldPosFamily">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelReligion">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Religion"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldReligion">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelEthnicOrigin">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ethnic Origin"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldEthnicOrigin">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelLanguages">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Languages Spoken"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldLanguages">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelImmunisations">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Immunisations"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelMedicalConditions">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Medical Conditions"/>
+      </Properties>
+    </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPaneNotesChild">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTextArea" name="jTextAreaNotes">
+          <Properties>
+            <Property name="columns" type="int" value="20"/>
+            <Property name="rows" type="int" value="5"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.JLabel" name="jLabelAddChild">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/images/addChild_button.png"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabelAddChildMousePressed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelHeading">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/images/newChildHeading.png"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelCancel">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/images/cancel_button.png"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabelCancelMousePressed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldDateOfBirth">
+    </Component>
+  </SubComponents>
+</Form>
