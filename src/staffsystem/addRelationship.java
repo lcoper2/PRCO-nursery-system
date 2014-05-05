@@ -34,7 +34,7 @@ public class addRelationship extends javax.swing.JFrame {
     String[] childInfo;
     String[] relativeInfo;
     
-    
+    int tab;
     /**
      * Creates new form addRelationship
      */
@@ -42,6 +42,20 @@ public class addRelationship extends javax.swing.JFrame {
         initComponents();
         getContentPane().setBackground(Color.white);
         this.setLocationRelativeTo(null);
+        this.tab = 2;
+        
+        connect = new DBConnection();
+        this.connect.dbConnect();
+        
+        setChildList();
+        setRelativeList();
+    }
+    
+    public addRelationship(int activeTab) throws SQLException, ClassNotFoundException {
+        initComponents();
+        getContentPane().setBackground(Color.white);
+        this.setLocationRelativeTo(null);
+        this.tab = activeTab;
         
         connect = new DBConnection();
         this.connect.dbConnect();
@@ -312,7 +326,7 @@ public class addRelationship extends javax.swing.JFrame {
         homePage home = null;
         this.dispose();
         try {
-            home = new homePage();
+            home = new homePage(tab);
         } catch (SQLException ex) {
             Logger.getLogger(addRelationship.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -325,7 +339,7 @@ public class addRelationship extends javax.swing.JFrame {
         homePage home = null;
         this.dispose();
         try {
-            home = new homePage();
+            home = new homePage(tab);
         } catch (SQLException ex) {
             Logger.getLogger(addRelationship.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -339,7 +353,7 @@ public class addRelationship extends javax.swing.JFrame {
         homePage home = null;
         this.dispose();
         try {
-            home = new homePage();
+            home = new homePage(tab);
         } catch (SQLException ex) {
             Logger.getLogger(addRelationship.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {

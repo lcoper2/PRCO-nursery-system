@@ -19,7 +19,7 @@ public class addStaff extends javax.swing.JFrame {
     Staff staff;
     StaffList staffList;
     DBConnection connect;
-    
+    int activeTab = 5;
     /**
      * Creates new form addStaff
      */
@@ -256,7 +256,7 @@ public class addStaff extends javax.swing.JFrame {
         homePage home = null;
         this.dispose();
         try {
-            home = new homePage();
+            home = new homePage(activeTab);
         } catch (SQLException ex) {
             Logger.getLogger(addStaff.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -320,7 +320,7 @@ public class addStaff extends javax.swing.JFrame {
         this.connect.closeConnection();
         this.dispose();
         
-        home = new homePage();
+        home = new homePage(activeTab);
         home.setVisible(true);
     }
     

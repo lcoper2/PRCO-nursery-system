@@ -19,6 +19,7 @@ public class addChild extends javax.swing.JFrame {
     Child child;
     ChildList childList;
     DBConnection connect;
+    int activeTab = 2;
     /**
      * Creates new form addChild
      */
@@ -273,7 +274,7 @@ public class addChild extends javax.swing.JFrame {
         homePage home = null;
         this.dispose();
         try {
-            home = new homePage();
+            home = new homePage(activeTab);
         } catch (SQLException ex) {
             Logger.getLogger(addChild.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -286,7 +287,7 @@ public class addChild extends javax.swing.JFrame {
         homePage home = null;
         this.dispose();
         try {
-            home = new homePage();
+            home = new homePage(activeTab);
         } catch (SQLException ex) {
             Logger.getLogger(addChild.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -352,7 +353,7 @@ public class addChild extends javax.swing.JFrame {
         this.connect.closeConnection();
         this.dispose();
         
-        home = new homePage();
+        home = new homePage(activeTab);
         home.setVisible(true);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables

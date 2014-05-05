@@ -27,12 +27,20 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jTabbedPaneHomePage" alignment="1" max="32767" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jTabbedPaneHomePage" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jTabbedPaneHomePage" alignment="1" max="32767" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jTabbedPaneHomePage" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -140,7 +148,7 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="608" max="32767" attributes="0"/>
+                              <EmptySpace pref="588" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -175,7 +183,7 @@
                                           <Component id="jTextFieldTodayBreakfast" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Component id="jScrollPane19" alignment="0" pref="406" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane19" alignment="0" pref="404" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -304,7 +312,7 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="608" max="32767" attributes="0"/>
+                              <EmptySpace pref="588" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -313,7 +321,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jScrollPane20" pref="406" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane20" pref="404" max="32767" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabelChildNameTodaySnowdrop" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -468,7 +476,7 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="608" max="32767" attributes="0"/>
+                              <EmptySpace pref="588" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -477,7 +485,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jScrollPane21" pref="406" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane21" pref="404" max="32767" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabelChildNameTodayButtercup" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -632,7 +640,7 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="608" max="32767" attributes="0"/>
+                              <EmptySpace pref="588" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -641,7 +649,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jScrollPane22" pref="406" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane22" pref="404" max="32767" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabelChildNameTodayBluebell" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -796,7 +804,7 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="608" max="32767" attributes="0"/>
+                              <EmptySpace pref="588" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -805,7 +813,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jScrollPane23" pref="406" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane23" pref="404" max="32767" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabelChildNameTodayFoxglove" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -960,7 +968,7 @@
                                   <Component id="jLabelNotesTodayOSCam" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabelTodayOSCamNum" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="608" max="32767" attributes="0"/>
+                              <EmptySpace pref="588" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -995,7 +1003,7 @@
                                           <Component id="jTextFieldTodayOSCAm" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Component id="jScrollPane24" pref="406" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane24" pref="404" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -1124,7 +1132,7 @@
                                   <Component id="jLabelNotesTodayOSCpm" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabelTodayOSCpmNum" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="608" max="32767" attributes="0"/>
+                              <EmptySpace pref="588" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1159,7 +1167,7 @@
                                           <Component id="jTextFieldTodayOSCPm" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Component id="jScrollPane25" pref="406" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane25" pref="404" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -1330,7 +1338,7 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="457" max="32767" attributes="0"/>
+                              <EmptySpace pref="437" max="32767" attributes="0"/>
                               <Component id="jLabelDateBreakfast" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jTextFieldDateBreakfast" min="-2" pref="100" max="-2" attributes="0"/>
@@ -1365,7 +1373,7 @@
                                           <Component id="jLabelNotesRegistersBreakfast" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="jScrollPane27" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace pref="152" max="32767" attributes="0"/>
+                                      <EmptySpace pref="150" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabelRegistersBreakfast" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="jTextFieldRegistersBreakfast" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1398,6 +1406,9 @@
                               </StringArray>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jListRegistersBreakfastMousePressed"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -1502,7 +1513,7 @@
                                       <Component id="jTextFieldDOBRegistersSnowdrop" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="457" max="32767" attributes="0"/>
+                              <EmptySpace pref="437" max="32767" attributes="0"/>
                               <Component id="jLabelDateSnowdrop" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jTextFieldDateSnowdrop" min="-2" pref="100" max="-2" attributes="0"/>
@@ -1515,7 +1526,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jScrollPane28" alignment="0" pref="406" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane28" alignment="0" pref="404" max="32767" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="103" alignment="0" groupAlignment="3" attributes="0">
@@ -1574,6 +1585,9 @@
                               </StringArray>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jListRegistersSnowdropMousePressed"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -1686,7 +1700,7 @@
                                       <Component id="jTextFieldDOBRegistersButtercup" min="-2" pref="100" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="457" max="32767" attributes="0"/>
+                              <EmptySpace pref="437" max="32767" attributes="0"/>
                               <Component id="jLabelDateButtercup" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jTextFieldDateButtercup" min="-2" pref="100" max="-2" attributes="0"/>
@@ -1699,7 +1713,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jScrollPane29" alignment="0" pref="406" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane29" alignment="0" pref="404" max="32767" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="103" alignment="0" groupAlignment="3" attributes="0">
@@ -1758,6 +1772,9 @@
                               </StringArray>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jListRegistersButtercupMousePressed"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -1864,7 +1881,7 @@
                                               <Component id="jTextFieldChildRegistersBluebell" min="-2" pref="200" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace pref="507" max="32767" attributes="0"/>
+                                      <EmptySpace pref="487" max="32767" attributes="0"/>
                                       <Component id="jLabelDateBluebell" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="jTextFieldDateBluebell" min="-2" pref="100" max="-2" attributes="0"/>
@@ -1893,7 +1910,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jScrollPane31" alignment="0" pref="406" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane31" alignment="0" pref="404" max="32767" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="103" alignment="0" groupAlignment="3" attributes="0">
@@ -1952,6 +1969,9 @@
                               </StringArray>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jListRegistersBluebellMousePressed"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -2064,7 +2084,7 @@
                                       <Component id="jTextFieldDOBRegistersFoxglove" min="-2" pref="100" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="457" max="32767" attributes="0"/>
+                              <EmptySpace pref="437" max="32767" attributes="0"/>
                               <Component id="jLabelDateFoxglove" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jTextFieldDateFoxglove" min="-2" pref="100" max="-2" attributes="0"/>
@@ -2077,7 +2097,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jScrollPane33" alignment="0" pref="406" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane33" alignment="0" pref="404" max="32767" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="103" alignment="0" groupAlignment="3" attributes="0">
@@ -2136,6 +2156,9 @@
                               </StringArray>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jListRegistersFoxgloveMousePressed"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -2236,7 +2259,7 @@
                                               </Group>
                                           </Group>
                                       </Group>
-                                      <EmptySpace pref="507" max="32767" attributes="0"/>
+                                      <EmptySpace pref="487" max="32767" attributes="0"/>
                                       <Component id="jLabelDateOSCAm" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="jTextFieldDateOSCAm" min="-2" pref="100" max="-2" attributes="0"/>
@@ -2302,7 +2325,7 @@
                                           <Component id="jTextFieldRegistersOSCam" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Component id="jScrollPane35" alignment="0" pref="406" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane35" alignment="0" pref="404" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -2329,6 +2352,9 @@
                               </StringArray>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jListRegistersOSCamMousePressed"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -2400,8 +2426,8 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                      <JTabbedPaneConstraints tabName="PM">
-                        <Property name="tabTitle" type="java.lang.String" value="PM"/>
+                      <JTabbedPaneConstraints tabName="">
+                        <Property name="tabTitle" type="java.lang.String" value=""/>
                         <Property name="tabIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/images/schoolPM_button.png"/>
                         </Property>
@@ -2438,7 +2464,7 @@
                                       <Component id="jTextFieldDOBRegistersOSCPm" min="-2" pref="100" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="457" max="32767" attributes="0"/>
+                              <EmptySpace pref="437" max="32767" attributes="0"/>
                               <Component id="jLabelDateOSCPm" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jTextFieldDateOSCPm" min="-2" pref="100" max="-2" attributes="0"/>
@@ -2484,7 +2510,7 @@
                                       </Group>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <Component id="jScrollPane37" alignment="0" pref="406" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane37" alignment="0" pref="404" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -2511,6 +2537,9 @@
                               </StringArray>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jListRegistersOSCpmMousePressed"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -2791,7 +2820,7 @@
                                       <Component id="jLabelRelativesChildren" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jScrollPane6" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="24" max="32767" attributes="0"/>
+                                      <EmptySpace pref="17" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jLabelAddRelationshipChild" alignment="1" min="-2" max="-2" attributes="0"/>
                                           <Group type="103" alignment="1" groupAlignment="0" attributes="0">
@@ -3193,7 +3222,7 @@
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="jLabelAddRelationshipRelative" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="562" max="32767" attributes="0"/>
+                                      <EmptySpace pref="542" max="32767" attributes="0"/>
                                       <Component id="jLabelDeleteRelative" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jLabelEditRelative" min="-2" max="-2" attributes="0"/>
@@ -3281,7 +3310,7 @@
                                       <Component id="jLabelChildrenRelative" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jScrollPane5" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="28" max="32767" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jLabelAddRelative" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabelEditRelative" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -3507,7 +3536,7 @@
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace min="0" pref="740" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="720" max="32767" attributes="0"/>
                               <Component id="jLabelDeleteBooking" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabelEditBooking" min="-2" max="-2" attributes="0"/>
@@ -3569,7 +3598,7 @@
                                   <Component id="jLabelSearchBookings" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane8" pref="474" max="32767" attributes="0"/>
+                              <Component id="jScrollPane8" pref="467" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="jLabelBookingHeading" min="-2" max="-2" attributes="0"/>
@@ -3817,14 +3846,12 @@
                                           <Group type="102" attributes="0">
                                               <Component id="jLabelRoomStaff" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Group type="102" attributes="0">
-                                                      <Component id="jLabelDeleteRoomStaff" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                      <Component id="jLabelStaffRoomList" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Component id="jScrollPane9" min="-2" pref="250" max="-2" attributes="0"/>
-                                              </Group>
+                                              <Component id="jScrollPane9" min="-2" pref="250" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jLabelDeleteRoomStaff" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="jLabelStaffRoomList" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
@@ -3849,7 +3876,7 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace min="0" pref="211" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="191" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -3942,22 +3969,18 @@
                                   </Group>
                                   <Component id="jLabelStaffHeading" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace pref="61" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jScrollPane9" min="-2" pref="96" max="-2" attributes="0"/>
+                                  <Component id="jLabelRoomStaff" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabelEditStaff" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabelAddStaff" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabelDeleteStaff" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jScrollPane9" min="-2" pref="96" max="-2" attributes="0"/>
-                                          <Component id="jLabelRoomStaff" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="unrelated" pref="73" max="32767" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabelStaffRoomList" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabelDeleteRoomStaff" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
+                                  <Component id="jLabelStaffRoomList" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelDeleteRoomStaff" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -4243,7 +4266,7 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace min="0" pref="666" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="646" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -4261,7 +4284,7 @@
                                   <Component id="jLabelSearchRoom" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane4" pref="474" max="32767" attributes="0"/>
+                              <Component id="jScrollPane4" pref="467" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="jLabelRoomHeading" min="-2" max="-2" attributes="0"/>

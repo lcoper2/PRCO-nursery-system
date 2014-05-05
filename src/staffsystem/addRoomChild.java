@@ -28,6 +28,8 @@ public class addRoomChild extends javax.swing.JFrame {
     private Object thisRoom;
     private String selectedRoom;
     private String[] roomInfo;
+    
+    int activeTab = 2;
     /**
      * Creates new form addRoomChild
      */
@@ -193,7 +195,7 @@ public class addRoomChild extends javax.swing.JFrame {
         homePage home = null;
         this.dispose();
         try {
-            home = new homePage();
+            home = new homePage(activeTab);
         } catch (SQLException ex) {
             Logger.getLogger(addBooking.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -206,7 +208,7 @@ public class addRoomChild extends javax.swing.JFrame {
         homePage home = null;
         this.dispose();
         try {
-            home = new homePage();
+            home = new homePage(activeTab);
         } catch (SQLException ex) {
             Logger.getLogger(addBooking.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {

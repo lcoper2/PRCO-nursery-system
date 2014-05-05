@@ -18,7 +18,7 @@ public class addRelative extends javax.swing.JFrame {
     Relative relative;
     RelativeList relativeList;
     DBConnection connect;
-
+    int activeTab = 3;
     /**
      * Creates new form addRelative
      */
@@ -219,7 +219,7 @@ public class addRelative extends javax.swing.JFrame {
         homePage home = null;
         this.dispose();
         try {
-            home = new homePage();
+            home = new homePage(activeTab);
         } catch (SQLException ex) {
             Logger.getLogger(addRelative.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -232,7 +232,7 @@ public class addRelative extends javax.swing.JFrame {
         homePage home = null;
         this.dispose();
         try {
-            home = new homePage();
+            home = new homePage(activeTab);
         } catch (SQLException ex) {
             Logger.getLogger(addRelative.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -294,7 +294,7 @@ public class addRelative extends javax.swing.JFrame {
         this.connect.closeConnection();
         this.dispose();
         
-        home = new homePage();
+        home = new homePage(activeTab);
         home.setVisible(true);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables

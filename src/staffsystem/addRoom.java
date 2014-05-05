@@ -18,7 +18,7 @@ public class addRoom extends javax.swing.JFrame {
     Room room;
     RoomList roomList;
     DBConnection connect;
-    
+    int activeTab = 6;
     /**
      * Creates new form addRoom
      */
@@ -168,7 +168,7 @@ public class addRoom extends javax.swing.JFrame {
         homePage home = null;
         this.dispose();
         try {
-            home = new homePage();
+            home = new homePage(activeTab);
         } catch (SQLException ex) {
             Logger.getLogger(addRoom.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -227,7 +227,7 @@ public class addRoom extends javax.swing.JFrame {
         this.connect.closeConnection();
         this.dispose();
         
-        home = new homePage();
+        home = new homePage(activeTab);
         home.setVisible(true);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables

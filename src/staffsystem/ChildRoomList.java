@@ -14,6 +14,7 @@ import java.util.ArrayList;
  */
 public class ChildRoomList {
     
+    DBConnection connect;
     private ArrayList<ChildRoom> childRoomList;
     ChildRoom childRoom;
     RoomList roomList;
@@ -22,10 +23,12 @@ public class ChildRoomList {
     
     public ChildRoomList(){
         childRoomList = new ArrayList<>();
+        connect = new DBConnection();
     }
 
     public ChildRoomList(ResultSet result) {
         childRoomList = new ArrayList<>();
+        connect = new DBConnection();
         
         try{
             while (result.next()){
@@ -40,7 +43,9 @@ public class ChildRoomList {
         }
     }
     
-    public ArrayList<String> getChildRoomNames(int id){
+    public ArrayList<String> getChildRoomNames(int id) throws SQLException{
+        roomList = this.connect.viewAllRooms();
+        
         for(ChildRoom cr: childRoomList){
             if(cr.getChildID() == id){
                 String stringID = cr.getRoomID() + "";
@@ -49,7 +54,6 @@ public class ChildRoomList {
             }
             
         }
-        
         
         return list; 
         

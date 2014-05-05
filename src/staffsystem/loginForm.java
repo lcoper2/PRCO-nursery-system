@@ -221,7 +221,7 @@ public class loginForm extends javax.swing.JFrame {
             this.dispose();
             this.connect.closeConnection();
 
-            home = new homePage();
+            home = new homePage(0);
             home.setVisible(true);
         } else{
             jPasswordFieldPassword.setText("");

@@ -6,6 +6,7 @@ package staffsystem;
 
 import java.awt.Color;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -71,6 +72,21 @@ public final class homePage extends javax.swing.JFrame {
     Boolean staffOSCpm;
 
     Child child;
+    Child bookingChild;
+    Child todayBreakfastChild;
+    Child todaySnowdropChild;
+    Child todayButtercupChild;
+    Child todayBluebellChild;
+    Child todayFoxgloveChild;
+    Child todayOSCAmChild;
+    Child todayOSCPmChild;
+    Child registersBreakfastChild;
+    Child registersSnowdropChild;
+    Child registersButtercupChild;
+    Child registersBluebellChild;
+    Child registersFoxgloveChild;
+    Child registersOSCAmChild;
+    Child registersOSCPmChild;
     ChildList childList = new ChildList();
     Relative relative;
     RelativeList relativeList = new RelativeList();
@@ -82,6 +98,7 @@ public final class homePage extends javax.swing.JFrame {
     Staff staff;
     StaffList staffList = new StaffList();
     Room room;
+    Room bookingRoom;
     RoomList roomList = new RoomList();
     Booking booking;
     BookingList bookingList = new BookingList();
@@ -125,14 +142,18 @@ public final class homePage extends javax.swing.JFrame {
     private int childRoomIndex;
     private Object thisChildRoom;
     private String selectedChildRoom;
+    
+    ArrayList<String> childRoomNames;
     /**
      * Creates new form homePage
      */
-    public homePage() throws SQLException, ClassNotFoundException {
+    public homePage(int activeTab) throws SQLException, ClassNotFoundException {
         initComponents();
         getContentPane().setBackground(Color.white);
         this.setLocationRelativeTo(null);
         this.setExtendedState(MAXIMIZED_BOTH);
+        
+        jTabbedPaneHomePage.setSelectedIndex(activeTab);
         
         connect = new DBConnection();
         this.connect.dbConnect();
@@ -213,7 +234,12 @@ public final class homePage extends javax.swing.JFrame {
         jTextFieldDietaryNeedsChild.setText(child.getDietaryNeeds());
         jTextAreaNotes.setText(child.getNotes());
         jListRelativesChildren.setListData(this.relativeRelationshipList.getAllRelationships());
-        //jListChildRoom.setListData(this.childRoomList.getChildRoomNames(Integer.parseInt(childInfo[0])).toArray());
+//      jListChildRoom.setListData(this.childRoomList.getChildRoomNames(Integer.parseInt(childInfo[0])).toArray());
+        
+//      childRoomNames = this.childRoomList.getChildRoomNames(Integer.parseInt(childInfo[0]));
+//      for (String childRoomName : childRoomNames) {
+//          System.out.println(childRoomName);
+//      }
         jListChildRoom.setListData(this.childRoomList.getAllChildRooms());
         jListChildRoom.setSelectedIndex(0);
 
@@ -373,12 +399,15 @@ public final class homePage extends javax.swing.JFrame {
         bookingIndex = jListBookings.getSelectedIndex();
         thisBooking = jListBookings.getModel().getElementAt(bookingIndex);
         selectedBooking = thisBooking.toString();
-        bookingInfo = selectedBooking.split(": ");
+        bookingInfo = selectedBooking.split(":|\\ ");
         booking = this.bookingList.getBookingAt(bookingInfo[0]);
         
+        bookingChild = this.childList.getChildAt(bookingInfo[4]);
+        bookingRoom = this.roomList.getRoomAt(bookingInfo[7]);
+        
         //set text boxes to selected booking item
-        jTextFieldChildBookings.setText(booking.getChildIDAsString());
-        jTextFieldRoomBookings.setText(booking.getRoomIDAsString());
+        jTextFieldChildBookings.setText(bookingChild.getFirstName() + " " + bookingChild.getSurname());
+        jTextFieldRoomBookings.setText(bookingRoom.getRoomName());
         jTextFieldDateBookings.setText(booking.getDate());
         jTextFieldSessionBookings.setText(booking.getSession());
         jTextAreaNotesBookings.setText(booking.getNotes());
@@ -397,11 +426,13 @@ public final class homePage extends javax.swing.JFrame {
             bookingIndex = jListTodayBreakfast.getSelectedIndex();
             thisBooking = jListTodayBreakfast.getModel().getElementAt(bookingIndex);
             selectedBooking = thisBooking.toString();
-            bookingInfo = selectedBooking.split(": ");
+            bookingInfo = selectedBooking.split(":|\\ ");
             booking = this.todayBreakfastBookingList.getBookingAt(bookingInfo[0]);
+            
+            todayBreakfastChild = this.childList.getChildAt(bookingInfo[4]);
 
-            jTextFieldChildTodayBreakfast.setText(booking.getChildIDAsString());
-            jTextFieldDOBTodayBreakfast.setText(booking.getChildIDAsString());
+            jTextFieldChildTodayBreakfast.setText(todayBreakfastChild.getFirstName() + " " + todayBreakfastChild.getSurname());
+            jTextFieldDOBTodayBreakfast.setText(todayBreakfastChild.getDateOfBirth());
             jTextFieldSessionTodayBreakfast.setText(booking.getSession());
             jTextAreaNotesTodayBreakfast.setText(booking.getNotes());
         } catch(ArrayIndexOutOfBoundsException e){
@@ -429,11 +460,13 @@ public final class homePage extends javax.swing.JFrame {
             bookingIndex = jListTodaySnowdrop.getSelectedIndex();
             thisBooking = jListTodaySnowdrop.getModel().getElementAt(bookingIndex);
             selectedBooking = thisBooking.toString();
-            bookingInfo = selectedBooking.split(": ");
+            bookingInfo = selectedBooking.split(":|\\ ");
             booking = this.todaySnowdropBookingList.getBookingAt(bookingInfo[0]);
+            
+            todaySnowdropChild = this.childList.getChildAt(bookingInfo[4]);
 
-            jTextFieldChildTodaySnowdrop.setText(booking.getChildIDAsString());
-            jTextFieldDOBTodaySnowdrop.setText(booking.getChildIDAsString());
+            jTextFieldChildTodaySnowdrop.setText(todaySnowdropChild.getFirstName() + " " + todaySnowdropChild.getSurname());
+            jTextFieldDOBTodaySnowdrop.setText(todaySnowdropChild.getDateOfBirth());
             jTextFieldSessionTodaySnowdrop.setText(booking.getSession());
             jTextAreaNotesTodaySnowdrop.setText(booking.getNotes());
         } catch(ArrayIndexOutOfBoundsException e){
@@ -460,11 +493,13 @@ public final class homePage extends javax.swing.JFrame {
             bookingIndex = jListTodayButtercup.getSelectedIndex();
             thisBooking = jListTodayButtercup.getModel().getElementAt(bookingIndex);
             selectedBooking = thisBooking.toString();
-            bookingInfo = selectedBooking.split(": ");
+            bookingInfo = selectedBooking.split(":|\\ ");
             booking = this.todayButtercupBookingList.getBookingAt(bookingInfo[0]);
+            
+            todayButtercupChild = this.childList.getChildAt(bookingInfo[4]);
 
-            jTextFieldChildTodayButtercup.setText(booking.getChildIDAsString());
-            jTextFieldDOBTodayButtercup.setText(booking.getChildIDAsString());
+            jTextFieldChildTodayButtercup.setText(todayButtercupChild.getFirstName() + " " + todayButtercupChild.getSurname());
+            jTextFieldDOBTodayButtercup.setText(todayButtercupChild.getDateOfBirth());
             jTextFieldSessionTodayButtercup.setText(booking.getSession());
             jTextAreaNotesTodayButtercup.setText(booking.getNotes());
         } catch(ArrayIndexOutOfBoundsException e){
@@ -491,11 +526,13 @@ public final class homePage extends javax.swing.JFrame {
             bookingIndex = jListTodayBluebell.getSelectedIndex();
             thisBooking = jListTodayBluebell.getModel().getElementAt(bookingIndex);
             selectedBooking = thisBooking.toString();
-            bookingInfo = selectedBooking.split(": ");
+            bookingInfo = selectedBooking.split(":|\\ ");
             booking = this.todayBluebellBookingList.getBookingAt(bookingInfo[0]);
+            
+            todayBluebellChild = this.childList.getChildAt(bookingInfo[4]);
 
-            jTextFieldChildTodayBluebell.setText(booking.getChildIDAsString());
-            jTextFieldDOBTodayBluebell.setText(booking.getChildIDAsString());
+            jTextFieldChildTodayBluebell.setText(todayBluebellChild.getFirstName() + " " + todayBluebellChild.getSurname());
+            jTextFieldDOBTodayBluebell.setText(todayBluebellChild.getDateOfBirth());
             jTextFieldSessionTodayBluebell.setText(booking.getSession());
             jTextAreaNotesTodayBluebell.setText(booking.getNotes());
         } catch(ArrayIndexOutOfBoundsException e){
@@ -522,11 +559,13 @@ public final class homePage extends javax.swing.JFrame {
             bookingIndex = jListTodayFoxglove.getSelectedIndex();
             thisBooking = jListTodayFoxglove.getModel().getElementAt(bookingIndex);
             selectedBooking = thisBooking.toString();
-            bookingInfo = selectedBooking.split(": ");
+            bookingInfo = selectedBooking.split(":|\\ ");
             booking = this.todayFoxgloveBookingList.getBookingAt(bookingInfo[0]);
+            
+            todayFoxgloveChild = this.childList.getChildAt(bookingInfo[4]);
 
-            jTextFieldChildTodayFoxglove.setText(booking.getChildIDAsString());
-            jTextFieldDOBTodayFoxglove.setText(booking.getChildIDAsString());
+            jTextFieldChildTodayFoxglove.setText(todayFoxgloveChild.getFirstName() + " " + todayFoxgloveChild.getSurname());
+            jTextFieldDOBTodayFoxglove.setText(todayFoxgloveChild.getDateOfBirth());
             jTextFieldSessionTodayFoxglove.setText(booking.getSession());
             jTextAreaNotesTodayFoxglove.setText(booking.getNotes());
         } catch(ArrayIndexOutOfBoundsException e){
@@ -553,11 +592,13 @@ public final class homePage extends javax.swing.JFrame {
             bookingIndex = jListTodayOSCam.getSelectedIndex();
             thisBooking = jListTodayOSCam.getModel().getElementAt(bookingIndex);
             selectedBooking = thisBooking.toString();
-            bookingInfo = selectedBooking.split(": ");
+            bookingInfo = selectedBooking.split(":|\\ ");
             booking = this.todayOSCAmBookingList.getBookingAt(bookingInfo[0]);
+            
+            todayOSCAmChild = this.childList.getChildAt(bookingInfo[4]);
 
-            jTextFieldChildTodayOSCam.setText(booking.getChildIDAsString());
-            jTextFieldDOBTodayOSCam.setText(booking.getChildIDAsString());
+            jTextFieldChildTodayOSCam.setText(todayOSCAmChild.getFirstName() + " " + todayOSCAmChild.getSurname());
+            jTextFieldDOBTodayOSCam.setText(todayOSCAmChild.getDateOfBirth());
             jTextFieldSessionTodayOSCam.setText(booking.getSession());
             jTextAreaNotesTodayOSCam.setText(booking.getNotes());
         } catch(ArrayIndexOutOfBoundsException e){
@@ -584,11 +625,13 @@ public final class homePage extends javax.swing.JFrame {
             bookingIndex = jListTodayOSCpm.getSelectedIndex();
             thisBooking = jListTodayOSCpm.getModel().getElementAt(bookingIndex);
             selectedBooking = thisBooking.toString();
-            bookingInfo = selectedBooking.split(": ");
+            bookingInfo = selectedBooking.split(":|\\ ");
             booking = this.todayOSCPmBookingList.getBookingAt(bookingInfo[0]);
+            
+            todayOSCPmChild = this.childList.getChildAt(bookingInfo[4]);
 
-            jTextFieldChildTodayOSCpm.setText(booking.getChildIDAsString());
-            jTextFieldDOBTodayOSCpm.setText(booking.getChildIDAsString());
+            jTextFieldChildTodayOSCpm.setText(todayOSCPmChild.getFirstName() + " " + todayOSCPmChild.getSurname());
+            jTextFieldDOBTodayOSCpm.setText(todayOSCPmChild.getDateOfBirth());
             jTextFieldSessionTodayOSCpm.setText(booking.getSession());
             jTextAreaNotesTodayOSCpm.setText(booking.getNotes());
         } catch(ArrayIndexOutOfBoundsException e){
@@ -616,11 +659,13 @@ public final class homePage extends javax.swing.JFrame {
             bookingIndex = jListRegistersBreakfast.getSelectedIndex();
             thisBooking = jListRegistersBreakfast.getModel().getElementAt(bookingIndex);
             selectedBooking = thisBooking.toString();
-            bookingInfo = selectedBooking.split(": ");
+            bookingInfo = selectedBooking.split(":|\\ ");
             booking = this.registersBreakfastBookingList.getBookingAt(bookingInfo[0]);
+            
+            registersBreakfastChild = this.childList.getChildAt(bookingInfo[4]);
 
-            jTextFieldChildRegistersBreakfast.setText(booking.getChildIDAsString());
-            jTextFieldDOBRegistersBreakfast.setText(booking.getChildIDAsString());
+            jTextFieldChildRegistersBreakfast.setText(registersBreakfastChild.getFirstName() + " " + registersBreakfastChild.getSurname());
+            jTextFieldDOBRegistersBreakfast.setText(registersBreakfastChild.getDateOfBirth());
             jTextFieldSessionRegistersBreakfast.setText(booking.getSession());
             jTextAreaNotesRegistersBreakfast.setText(booking.getNotes());
         } catch(ArrayIndexOutOfBoundsException e){
@@ -648,11 +693,13 @@ public final class homePage extends javax.swing.JFrame {
             bookingIndex = jListRegistersSnowdrop.getSelectedIndex();
             thisBooking = jListRegistersSnowdrop.getModel().getElementAt(bookingIndex);
             selectedBooking = thisBooking.toString();
-            bookingInfo = selectedBooking.split(": ");
+            bookingInfo = selectedBooking.split(":|\\ ");
             booking = this.registersSnowdropBookingList.getBookingAt(bookingInfo[0]);
+            
+            registersSnowdropChild = this.childList.getChildAt(bookingInfo[4]);
 
-            jTextFieldChildRegistersSnowdrop.setText(booking.getChildIDAsString());
-            jTextFieldDOBRegistersSnowdrop.setText(booking.getChildIDAsString());
+            jTextFieldChildRegistersSnowdrop.setText(registersSnowdropChild.getFirstName() + " " + registersSnowdropChild.getSurname());
+            jTextFieldDOBRegistersSnowdrop.setText(registersSnowdropChild.getDateOfBirth());
             jTextFieldSessionRegistersSnowdrop.setText(booking.getSession());
             jTextAreaNotesRegistersSnowdrop.setText(booking.getNotes());
         } catch(ArrayIndexOutOfBoundsException e){
@@ -680,11 +727,13 @@ public final class homePage extends javax.swing.JFrame {
             bookingIndex = jListRegistersButtercup.getSelectedIndex();
             thisBooking = jListRegistersButtercup.getModel().getElementAt(bookingIndex);
             selectedBooking = thisBooking.toString();
-            bookingInfo = selectedBooking.split(": ");
+            bookingInfo = selectedBooking.split(":|\\ ");
             booking = this.registersButtercupBookingList.getBookingAt(bookingInfo[0]);
+            
+            registersButtercupChild = this.childList.getChildAt(bookingInfo[4]);
 
-            jTextFieldChildRegistersButtercup.setText(booking.getChildIDAsString());
-            jTextFieldDOBRegistersButtercup.setText(booking.getChildIDAsString());
+            jTextFieldChildRegistersButtercup.setText(registersButtercupChild.getFirstName() + " " + registersButtercupChild.getSurname());
+            jTextFieldDOBRegistersButtercup.setText(registersButtercupChild.getDateOfBirth());
             jTextFieldSessionRegistersButtercup.setText(booking.getSession());
             jTextAreaNotesRegistersButtercup.setText(booking.getNotes());
         } catch(ArrayIndexOutOfBoundsException e){
@@ -712,11 +761,13 @@ public final class homePage extends javax.swing.JFrame {
             bookingIndex = jListRegistersBluebell.getSelectedIndex();
             thisBooking = jListRegistersBluebell.getModel().getElementAt(bookingIndex);
             selectedBooking = thisBooking.toString();
-            bookingInfo = selectedBooking.split(": ");
+            bookingInfo = selectedBooking.split(":|\\ ");
             booking = this.registersBluebellBookingList.getBookingAt(bookingInfo[0]);
+            
+            registersBluebellChild = this.childList.getChildAt(bookingInfo[4]);
 
-            jTextFieldChildRegistersBluebell.setText(booking.getChildIDAsString());
-            jTextFieldDOBRegistersBluebell.setText(booking.getChildIDAsString());
+            jTextFieldChildRegistersBluebell.setText(registersBluebellChild.getFirstName() + " " + registersBluebellChild.getSurname());
+            jTextFieldDOBRegistersBluebell.setText(registersBluebellChild.getDateOfBirth());
             jTextFieldSessionRegistersBluebell.setText(booking.getSession());
             jTextAreaNotesRegistersBluebell.setText(booking.getNotes());
         } catch(ArrayIndexOutOfBoundsException e){
@@ -744,11 +795,13 @@ public final class homePage extends javax.swing.JFrame {
             bookingIndex = jListRegistersFoxglove.getSelectedIndex();
             thisBooking = jListRegistersFoxglove.getModel().getElementAt(bookingIndex);
             selectedBooking = thisBooking.toString();
-            bookingInfo = selectedBooking.split(": ");
+            bookingInfo = selectedBooking.split(":|\\ ");
             booking = this.registersFoxgloveBookingList.getBookingAt(bookingInfo[0]);
+            
+            registersFoxgloveChild = this.childList.getChildAt(bookingInfo[4]);
 
-            jTextFieldChildRegistersFoxglove.setText(booking.getChildIDAsString());
-            jTextFieldDOBRegistersFoxglove.setText(booking.getChildIDAsString());
+            jTextFieldChildRegistersFoxglove.setText(registersFoxgloveChild.getFirstName() + " " + registersFoxgloveChild.getSurname());
+            jTextFieldDOBRegistersFoxglove.setText(registersFoxgloveChild.getDateOfBirth());
             jTextFieldSessionRegistersFoxglove.setText(booking.getSession());
             jTextAreaNotesRegistersFoxglove.setText(booking.getNotes());
         } catch(ArrayIndexOutOfBoundsException e){
@@ -776,11 +829,13 @@ public final class homePage extends javax.swing.JFrame {
             bookingIndex = jListRegistersOSCam.getSelectedIndex();
             thisBooking = jListRegistersOSCam.getModel().getElementAt(bookingIndex);
             selectedBooking = thisBooking.toString();
-            bookingInfo = selectedBooking.split(": ");
+            bookingInfo = selectedBooking.split(":|\\ ");
             booking = this.registersOSCAmBookingList.getBookingAt(bookingInfo[0]);
+            
+            registersOSCAmChild = this.childList.getChildAt(bookingInfo[4]);
 
-            jTextFieldChildRegistersOSCam.setText(booking.getChildIDAsString());
-            jTextFieldDOBRegistersOSCAm.setText(booking.getChildIDAsString());
+            jTextFieldChildRegistersOSCam.setText(registersOSCAmChild.getFirstName() + " " + registersOSCAmChild.getSurname());
+            jTextFieldDOBRegistersOSCAm.setText(registersOSCAmChild.getDateOfBirth());
             jTextFieldSessionRegistersOSCam.setText(booking.getSession());
             jTextAreaNotesRegistersOSCam.setText(booking.getNotes());
         } catch(ArrayIndexOutOfBoundsException e){
@@ -808,11 +863,13 @@ public final class homePage extends javax.swing.JFrame {
             bookingIndex = jListRegistersOSCpm.getSelectedIndex();
             thisBooking = jListRegistersOSCpm.getModel().getElementAt(bookingIndex);
             selectedBooking = thisBooking.toString();
-            bookingInfo = selectedBooking.split(": ");
+            bookingInfo = selectedBooking.split(":|\\ ");
             booking = this.registersOSCPmBookingList.getBookingAt(bookingInfo[0]);
+            
+            registersOSCPmChild = this.childList.getChildAt(bookingInfo[4]);
 
-            jTextFieldChildRegistersOSCpm.setText(booking.getChildIDAsString());
-            jTextFieldDOBRegistersOSCPm.setText(booking.getChildIDAsString());
+            jTextFieldChildRegistersOSCpm.setText(registersOSCPmChild.getFirstName() + " " + registersOSCPmChild.getSurname());
+            jTextFieldDOBRegistersOSCPm.setText(registersOSCPmChild.getDateOfBirth());
             jTextFieldSessionRegistersOSCpm.setText(booking.getSession());
             jTextAreaNotesRegistersOSCpm.setText(booking.getNotes());
         } catch(ArrayIndexOutOfBoundsException e){
@@ -1271,7 +1328,7 @@ public final class homePage extends javax.swing.JFrame {
                             .addGroup(jPanelTodayBreakfastLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jTextFieldDOBTodayBreakfast, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jTextFieldSessionTodayBreakfast, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(608, Short.MAX_VALUE))
+                .addContainerGap(588, Short.MAX_VALUE))
         );
         jPanelTodayBreakfastLayout.setVerticalGroup(
             jPanelTodayBreakfastLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1298,7 +1355,7 @@ public final class homePage extends javax.swing.JFrame {
                         .addGroup(jPanelTodayBreakfastLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelTodayBreakfast)
                             .addComponent(jTextFieldTodayBreakfast, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane19, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE))
+                    .addComponent(jScrollPane19, javax.swing.GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -1357,14 +1414,14 @@ public final class homePage extends javax.swing.JFrame {
                             .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextFieldSessionTodaySnowdrop, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextFieldTodaySnowdrop, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(608, Short.MAX_VALUE))
+                .addContainerGap(588, Short.MAX_VALUE))
         );
         jPanelTodaySnowdropLayout.setVerticalGroup(
             jPanelTodaySnowdropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelTodaySnowdropLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelTodaySnowdropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane20, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
+                    .addComponent(jScrollPane20, javax.swing.GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
                     .addGroup(jPanelTodaySnowdropLayout.createSequentialGroup()
                         .addGroup(jPanelTodaySnowdropLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelChildNameTodaySnowdrop)
@@ -1443,14 +1500,14 @@ public final class homePage extends javax.swing.JFrame {
                             .addComponent(jTextFieldChildTodayButtercup, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextFieldSessionTodayButtercup, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(608, Short.MAX_VALUE))
+                .addContainerGap(588, Short.MAX_VALUE))
         );
         jPanelTodayButtercupLayout.setVerticalGroup(
             jPanelTodayButtercupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelTodayButtercupLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelTodayButtercupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane21, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
+                    .addComponent(jScrollPane21, javax.swing.GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
                     .addGroup(jPanelTodayButtercupLayout.createSequentialGroup()
                         .addGroup(jPanelTodayButtercupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelChildNameTodayButtercup)
@@ -1529,14 +1586,14 @@ public final class homePage extends javax.swing.JFrame {
                             .addComponent(jTextFieldChildTodayBluebell, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextFieldSessionTodayBluebell, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(608, Short.MAX_VALUE))
+                .addContainerGap(588, Short.MAX_VALUE))
         );
         jPanelTodayBluebellLayout.setVerticalGroup(
             jPanelTodayBluebellLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelTodayBluebellLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelTodayBluebellLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane22, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
+                    .addComponent(jScrollPane22, javax.swing.GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
                     .addGroup(jPanelTodayBluebellLayout.createSequentialGroup()
                         .addGroup(jPanelTodayBluebellLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelChildNameTodayBluebell)
@@ -1615,14 +1672,14 @@ public final class homePage extends javax.swing.JFrame {
                             .addComponent(jTextFieldChildTodayFoxglove, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextFieldSessionTodayFoxglove, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(608, Short.MAX_VALUE))
+                .addContainerGap(588, Short.MAX_VALUE))
         );
         jPanelTodayFoxgloveLayout.setVerticalGroup(
             jPanelTodayFoxgloveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelTodayFoxgloveLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelTodayFoxgloveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane23, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
+                    .addComponent(jScrollPane23, javax.swing.GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
                     .addGroup(jPanelTodayFoxgloveLayout.createSequentialGroup()
                         .addGroup(jPanelTodayFoxgloveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelChildNameTodayFoxglove)
@@ -1701,7 +1758,7 @@ public final class homePage extends javax.swing.JFrame {
                         .addComponent(jTextFieldDOBTodayOSCam, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabelNotesTodayOSCam)
                     .addComponent(jLabelTodayOSCamNum))
-                .addContainerGap(608, Short.MAX_VALUE))
+                .addContainerGap(588, Short.MAX_VALUE))
         );
         jPanelTodayOSCamLayout.setVerticalGroup(
             jPanelTodayOSCamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1728,7 +1785,7 @@ public final class homePage extends javax.swing.JFrame {
                         .addGroup(jPanelTodayOSCamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelTodayOSCamNum)
                             .addComponent(jTextFieldTodayOSCAm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane24, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE))
+                    .addComponent(jScrollPane24, javax.swing.GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -1787,7 +1844,7 @@ public final class homePage extends javax.swing.JFrame {
                         .addComponent(jTextFieldDOBTodayOSCpm, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabelNotesTodayOSCpm)
                     .addComponent(jLabelTodayOSCpmNum))
-                .addContainerGap(608, Short.MAX_VALUE))
+                .addContainerGap(588, Short.MAX_VALUE))
         );
         jPanelTodayOSCpmLayout.setVerticalGroup(
             jPanelTodayOSCpmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1814,7 +1871,7 @@ public final class homePage extends javax.swing.JFrame {
                         .addGroup(jPanelTodayOSCpmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelTodayOSCpmNum)
                             .addComponent(jTextFieldTodayOSCPm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane25, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE))
+                    .addComponent(jScrollPane25, javax.swing.GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -1841,6 +1898,11 @@ public final class homePage extends javax.swing.JFrame {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
+        });
+        jListRegistersBreakfast.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jListRegistersBreakfastMousePressed(evt);
+            }
         });
         jScrollPane26.setViewportView(jListRegistersBreakfast);
 
@@ -1893,7 +1955,7 @@ public final class homePage extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jTextFieldDOBRegistersBreakfast, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jTextFieldSessionRegistersBreakfast, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 457, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 437, Short.MAX_VALUE)
                 .addComponent(jLabelDateBreakfast)
                 .addGap(18, 18, 18)
                 .addComponent(jTextFieldDateBreakfast, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1922,7 +1984,7 @@ public final class homePage extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelNotesRegistersBreakfast)
                             .addComponent(jScrollPane27, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 152, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 150, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelRegistersBreakfast)
                             .addComponent(jTextFieldRegistersBreakfast, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -1938,6 +2000,11 @@ public final class homePage extends javax.swing.JFrame {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
+        });
+        jListRegistersSnowdrop.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jListRegistersSnowdropMousePressed(evt);
+            }
         });
         jScrollPane28.setViewportView(jListRegistersSnowdrop);
 
@@ -1985,7 +2052,7 @@ public final class homePage extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jTextFieldSessionRegistersSnowdrop, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jTextFieldDOBRegistersSnowdrop, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 457, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 437, Short.MAX_VALUE)
                 .addComponent(jLabelDateSnowdrop)
                 .addGap(18, 18, 18)
                 .addComponent(jTextFieldDateSnowdrop, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1996,7 +2063,7 @@ public final class homePage extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane28, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
+                    .addComponent(jScrollPane28, javax.swing.GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -2032,6 +2099,11 @@ public final class homePage extends javax.swing.JFrame {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
+        });
+        jListRegistersButtercup.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jListRegistersButtercupMousePressed(evt);
+            }
         });
         jScrollPane29.setViewportView(jListRegistersButtercup);
 
@@ -2084,7 +2156,7 @@ public final class homePage extends javax.swing.JFrame {
                         .addComponent(jLabelDOBRegistersButtercup)
                         .addGap(18, 18, 18)
                         .addComponent(jTextFieldDOBRegistersButtercup, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 457, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 437, Short.MAX_VALUE)
                 .addComponent(jLabelDateButtercup)
                 .addGap(18, 18, 18)
                 .addComponent(jTextFieldDateButtercup, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2095,7 +2167,7 @@ public final class homePage extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane29, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
+                    .addComponent(jScrollPane29, javax.swing.GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -2131,6 +2203,11 @@ public final class homePage extends javax.swing.JFrame {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
+        });
+        jListRegistersBluebell.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jListRegistersBluebellMousePressed(evt);
+            }
         });
         jScrollPane31.setViewportView(jListRegistersBluebell);
 
@@ -2179,7 +2256,7 @@ public final class homePage extends javax.swing.JFrame {
                                 .addComponent(jLabelChildNameRegistersBluebell)
                                 .addGap(58, 58, 58)
                                 .addComponent(jTextFieldChildRegistersBluebell, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 507, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 487, Short.MAX_VALUE)
                         .addComponent(jLabelDateBluebell)
                         .addGap(18, 18, 18)
                         .addComponent(jTextFieldDateBluebell, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -2200,7 +2277,7 @@ public final class homePage extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane31, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
+                    .addComponent(jScrollPane31, javax.swing.GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -2236,6 +2313,11 @@ public final class homePage extends javax.swing.JFrame {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
+        });
+        jListRegistersFoxglove.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jListRegistersFoxgloveMousePressed(evt);
+            }
         });
         jScrollPane33.setViewportView(jListRegistersFoxglove);
 
@@ -2288,7 +2370,7 @@ public final class homePage extends javax.swing.JFrame {
                         .addComponent(jLabelDOBRegistersFoxglove)
                         .addGap(18, 18, 18)
                         .addComponent(jTextFieldDOBRegistersFoxglove, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 457, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 437, Short.MAX_VALUE)
                 .addComponent(jLabelDateFoxglove)
                 .addGap(18, 18, 18)
                 .addComponent(jTextFieldDateFoxglove, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2299,7 +2381,7 @@ public final class homePage extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane33, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
+                    .addComponent(jScrollPane33, javax.swing.GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -2335,6 +2417,11 @@ public final class homePage extends javax.swing.JFrame {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
+        });
+        jListRegistersOSCam.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jListRegistersOSCamMousePressed(evt);
+            }
         });
         jScrollPane35.setViewportView(jListRegistersOSCam);
 
@@ -2378,7 +2465,7 @@ public final class homePage extends javax.swing.JFrame {
                                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTextFieldChildRegistersOSCam, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTextFieldRegistersOSCam, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 507, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 487, Short.MAX_VALUE)
                         .addComponent(jLabelDateOSCAm)
                         .addGap(18, 18, 18)
                         .addComponent(jTextFieldDateOSCAm, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -2427,7 +2514,7 @@ public final class homePage extends javax.swing.JFrame {
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelRegistersOSCamNum)
                             .addComponent(jTextFieldRegistersOSCam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane35, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE))
+                    .addComponent(jScrollPane35, javax.swing.GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -2439,6 +2526,11 @@ public final class homePage extends javax.swing.JFrame {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
+        });
+        jListRegistersOSCpm.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jListRegistersOSCpmMousePressed(evt);
+            }
         });
         jScrollPane37.setViewportView(jListRegistersOSCpm);
 
@@ -2489,7 +2581,7 @@ public final class homePage extends javax.swing.JFrame {
                         .addComponent(jLabelDOBRegistersOSCpm)
                         .addGap(18, 18, 18)
                         .addComponent(jTextFieldDOBRegistersOSCPm, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 457, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 437, Short.MAX_VALUE)
                 .addComponent(jLabelDateOSCPm)
                 .addGap(18, 18, 18)
                 .addComponent(jTextFieldDateOSCPm, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2525,11 +2617,11 @@ public final class homePage extends javax.swing.JFrame {
                             .addComponent(jLabelDateOSCPm)
                             .addComponent(jTextFieldDateOSCPm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane37, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE))
+                    .addComponent(jScrollPane37, javax.swing.GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
-        jTabbedPaneRegisters.addTab("PM", new javax.swing.ImageIcon(getClass().getResource("/images/schoolPM_button.png")), jPanel8); // NOI18N
+        jTabbedPaneRegisters.addTab("", new javax.swing.ImageIcon(getClass().getResource("/images/schoolPM_button.png")), jPanel8); // NOI18N
 
         javax.swing.GroupLayout jPanelRegistersLayout = new javax.swing.GroupLayout(jPanelRegisters);
         jPanelRegisters.setLayout(jPanelRegistersLayout);
@@ -2825,7 +2917,7 @@ public final class homePage extends javax.swing.JFrame {
                                 .addComponent(jLabelRelativesChildren)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                                 .addGroup(jPanelChildrenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabelAddRelationshipChild, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelChildrenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2989,7 +3081,7 @@ public final class homePage extends javax.swing.JFrame {
                                 .addGap(295, 295, 295))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRelativesLayout.createSequentialGroup()
                                 .addComponent(jLabelAddRelationshipRelative)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 562, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 542, Short.MAX_VALUE)
                                 .addComponent(jLabelDeleteRelative)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabelEditRelative)
@@ -3057,7 +3149,7 @@ public final class homePage extends javax.swing.JFrame {
                                 .addComponent(jLabelChildrenRelative)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanelRelativesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabelAddRelative)
                                     .addComponent(jLabelEditRelative, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -3143,7 +3235,7 @@ public final class homePage extends javax.swing.JFrame {
                         .addComponent(jTextFieldSearchBookings)))
                 .addGroup(jPanelBookingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelBookingsLayout.createSequentialGroup()
-                        .addGap(0, 740, Short.MAX_VALUE)
+                        .addGap(0, 720, Short.MAX_VALUE)
                         .addComponent(jLabelDeleteBooking)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabelEditBooking)
@@ -3189,7 +3281,7 @@ public final class homePage extends javax.swing.JFrame {
                             .addComponent(jTextFieldSearchBookings, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabelSearchBookings))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 474, Short.MAX_VALUE))
+                        .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE))
                     .addGroup(jPanelBookingsLayout.createSequentialGroup()
                         .addComponent(jLabelBookingHeading)
                         .addGap(18, 18, 18)
@@ -3375,12 +3467,11 @@ public final class homePage extends javax.swing.JFrame {
                                     .addGroup(jPanelStaffLayout.createSequentialGroup()
                                         .addComponent(jLabelRoomStaff)
                                         .addGap(61, 61, 61)
-                                        .addGroup(jPanelStaffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanelStaffLayout.createSequentialGroup()
-                                                .addComponent(jLabelDeleteRoomStaff)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jLabelStaffRoomList))
-                                            .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanelStaffLayout.createSequentialGroup()
+                                        .addComponent(jLabelDeleteRoomStaff)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabelStaffRoomList)))
                                 .addGap(119, 119, 119)
                                 .addGroup(jPanelStaffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabelMedicalConditionsStaff)
@@ -3398,7 +3489,7 @@ public final class homePage extends javax.swing.JFrame {
                                         .addComponent(jTextFieldMobileNumStaff, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jTextFieldUsernameStaff, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTextFieldPasswordStaff, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 211, Short.MAX_VALUE)))
+                        .addGap(0, 191, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanelStaffLayout.setVerticalGroup(
@@ -3467,19 +3558,17 @@ public final class homePage extends javax.swing.JFrame {
                                                     .addComponent(jTextFieldPasswordStaff, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addComponent(jLabelPasswordStaff)))))))
                             .addComponent(jLabelStaffHeading))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                        .addGroup(jPanelStaffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelRoomStaff))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanelStaffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelEditStaff, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabelAddStaff, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabelDeleteStaff, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanelStaffLayout.createSequentialGroup()
-                                .addGroup(jPanelStaffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabelRoomStaff))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 73, Short.MAX_VALUE)
-                                .addGroup(jPanelStaffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabelStaffRoomList, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabelDeleteRoomStaff, javax.swing.GroupLayout.Alignment.TRAILING))))))
+                            .addComponent(jLabelStaffRoomList, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabelDeleteRoomStaff, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap())
         );
 
@@ -3583,7 +3672,7 @@ public final class homePage extends javax.swing.JFrame {
                                     .addGroup(jPanelRoomsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(jTextFieldRatioRooms, javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jTextFieldMaxNumberChildrenRooms, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(0, 666, Short.MAX_VALUE)))
+                        .addGap(0, 646, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanelRoomsLayout.setVerticalGroup(
@@ -3596,7 +3685,7 @@ public final class homePage extends javax.swing.JFrame {
                             .addComponent(jTextFieldSearchRooms, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabelSearchRoom))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 474, Short.MAX_VALUE))
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE))
                     .addGroup(jPanelRoomsLayout.createSequentialGroup()
                         .addComponent(jLabelRoomHeading)
                         .addGap(18, 18, 18)
@@ -3633,11 +3722,17 @@ public final class homePage extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPaneHomePage, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPaneHomePage)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPaneHomePage, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPaneHomePage)
+                .addContainerGap())
         );
 
         jTabbedPaneHomePage.getAccessibleContext().setAccessibleName("");
@@ -3673,7 +3768,7 @@ public final class homePage extends javax.swing.JFrame {
         addRelationship addRelationship = null;
         this.dispose();
         try {
-            addRelationship = new addRelationship();
+            addRelationship = new addRelationship(3);
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(homePage.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -3706,7 +3801,7 @@ public final class homePage extends javax.swing.JFrame {
         addRelationship addRelationship = null;
         this.dispose();
         try {
-            addRelationship = new addRelationship();
+            addRelationship = new addRelationship(2);
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(homePage.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -4094,6 +4189,34 @@ public final class homePage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jListChildRoomMousePressed
 
+    private void jListRegistersBreakfastMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListRegistersBreakfastMousePressed
+        updateRegistersBreakfastList();
+    }//GEN-LAST:event_jListRegistersBreakfastMousePressed
+
+    private void jListRegistersSnowdropMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListRegistersSnowdropMousePressed
+        updateRegistersSnowdropList();
+    }//GEN-LAST:event_jListRegistersSnowdropMousePressed
+
+    private void jListRegistersButtercupMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListRegistersButtercupMousePressed
+        updateRegistersButtercupList();
+    }//GEN-LAST:event_jListRegistersButtercupMousePressed
+
+    private void jListRegistersBluebellMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListRegistersBluebellMousePressed
+        updateRegistersBluebellList();
+    }//GEN-LAST:event_jListRegistersBluebellMousePressed
+
+    private void jListRegistersFoxgloveMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListRegistersFoxgloveMousePressed
+        updateRegistersFoxgloveList();
+    }//GEN-LAST:event_jListRegistersFoxgloveMousePressed
+
+    private void jListRegistersOSCamMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListRegistersOSCamMousePressed
+        updateRegistersOSCAmList();
+    }//GEN-LAST:event_jListRegistersOSCamMousePressed
+
+    private void jListRegistersOSCpmMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListRegistersOSCpmMousePressed
+        updateRegistersOSCPmList();
+    }//GEN-LAST:event_jListRegistersOSCpmMousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -4120,7 +4243,8 @@ public final class homePage extends javax.swing.JFrame {
             @Override
             public void run() {
                 try {
-                    new homePage().setVisible(true);
+                    int activeTab = 0;
+                    new homePage(activeTab).setVisible(true);
                 } catch (SQLException | ClassNotFoundException ex) {
                     Logger.getLogger(homePage.class.getName()).log(Level.SEVERE, null, ex);
                 }

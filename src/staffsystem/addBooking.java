@@ -17,12 +17,18 @@ public class addBooking extends javax.swing.JFrame {
     
     Child child;
     ChildList childList;
+    Room room;
+    RoomList roomList;
     DBConnection connect;
     private int childIndex;
     private Object thisChild;
     private String selectedChild;
     private String[] childInfo;
-
+    private int roomIndex;
+    private Object thisRoom;
+    private String selectedRoom;
+    private String[] roomInfo;
+    int activeTab = 4;
     /**
      * Creates new form addBooking
      */
@@ -35,6 +41,7 @@ public class addBooking extends javax.swing.JFrame {
         this.connect.dbConnect();
         
         setChildList();
+        setRoomList();
     }
 
     /**
@@ -64,6 +71,8 @@ public class addBooking extends javax.swing.JFrame {
         jTextFieldDate = new javax.swing.JTextField();
         jTextFieldSession = new javax.swing.JTextField();
         jLabelSearch = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jListRooms = new javax.swing.JList();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -122,6 +131,18 @@ public class addBooking extends javax.swing.JFrame {
 
         jLabelSearch.setText("Search");
 
+        jListRooms.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        jListRooms.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jListRoomsMousePressed(evt);
+            }
+        });
+        jScrollPane3.setViewportView(jListRooms);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -130,7 +151,8 @@ public class addBooking extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(198, 198, 198)
-                        .addComponent(jLabelHeading))
+                        .addComponent(jLabelHeading)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -139,33 +161,38 @@ public class addBooking extends javax.swing.JFrame {
                                 .addComponent(jLabelSearch)
                                 .addGap(18, 18, 18)
                                 .addComponent(jTextFieldSearch)))
-                        .addGap(29, 29, 29)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabelChild)
-                                    .addComponent(jLabelRoom)
-                                    .addComponent(jLabelDate))
-                                .addGap(73, 73, 73)
+                                .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jTextFieldDate, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 110, Short.MAX_VALUE))
-                                    .addComponent(jTextFieldRoom)
-                                    .addComponent(jTextFieldChild)))
-                            .addComponent(jScrollPane2)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabelChild)
+                                            .addComponent(jLabelRoom)
+                                            .addComponent(jLabelDate))
+                                        .addGap(73, 73, 73)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jTextFieldDate, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(0, 110, Short.MAX_VALUE))
+                                            .addComponent(jTextFieldRoom)
+                                            .addComponent(jTextFieldChild)))
+                                    .addComponent(jScrollPane2)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabelSession)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jTextFieldSession, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(jLabelNotes))
+                                        .addGap(0, 0, Short.MAX_VALUE))))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabelSession)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jTextFieldSession, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabelNotes))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addGap(18, 18, 18)
-                .addComponent(jLabelCancel)
-                .addGap(18, 18, 18)
-                .addComponent(jLabelAddBooking)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabelCancel)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabelAddBooking)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -181,12 +208,8 @@ public class addBooking extends javax.swing.JFrame {
                             .addComponent(jLabelSearch))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabelCancel, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabelAddBooking, javax.swing.GroupLayout.Alignment.TRAILING)))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
+                            .addComponent(jScrollPane3)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextFieldChild, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -207,7 +230,10 @@ public class addBooking extends javax.swing.JFrame {
                         .addComponent(jLabelNotes)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelCancel, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabelAddBooking, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap())
         );
 
@@ -215,12 +241,12 @@ public class addBooking extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabelAddBookingMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAddBookingMousePressed
-        connect.addBooking(childInfo[0], jTextFieldRoom.getText(), jTextFieldDate.getText(), jTextFieldSession.getText(), jTextAreaNotes.getText());
+        connect.addBooking(childInfo[0], roomInfo[0], jTextFieldDate.getText(), jTextFieldSession.getText(), jTextAreaNotes.getText());
         
         homePage home = null;
         this.dispose();
         try {
-            home = new homePage();
+            home = new homePage(activeTab);
         } catch (SQLException ex) {
             Logger.getLogger(addBooking.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -233,7 +259,7 @@ public class addBooking extends javax.swing.JFrame {
         homePage home = null;
         this.dispose();
         try {
-            home = new homePage();
+            home = new homePage(activeTab);
         } catch (SQLException ex) {
             Logger.getLogger(addBooking.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -246,7 +272,7 @@ public class addBooking extends javax.swing.JFrame {
         homePage home = null;
         this.dispose();
         try {
-            home = new homePage();
+            home = new homePage(activeTab);
         } catch (SQLException ex) {
             Logger.getLogger(addBooking.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -266,6 +292,10 @@ public class addBooking extends javax.swing.JFrame {
             Logger.getLogger(addBooking.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jTextFieldSearchKeyReleased
+
+    private void jListRoomsMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListRoomsMousePressed
+        updateSelectedRoom();
+    }//GEN-LAST:event_jListRoomsMousePressed
 
     /**
      * @param args the command line arguments
@@ -339,6 +369,29 @@ public class addBooking extends javax.swing.JFrame {
         }
     }
     
+    public void setRoomList() throws SQLException{
+        this.roomList = this.connect.viewAllRooms();
+        jListRooms.setListData(this.roomList.getAllRooms());
+        jListRooms.setSelectedIndex(0);
+        
+        updateSelectedRoom();
+    }
+    
+    public void updateSelectedRoom(){
+        try{
+            roomIndex = jListRooms.getSelectedIndex();
+            thisRoom = jListRooms.getModel().getElementAt(roomIndex);
+            selectedRoom = thisRoom.toString();
+            roomInfo = selectedRoom.split(", ");
+            room = this.roomList.getRoomAt(roomInfo[0]);
+
+            jTextFieldRoom.setText(room.getRoomName());
+        }
+        catch(IndexOutOfBoundsException e){
+            System.out.println("e");
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabelAddBooking;
     private javax.swing.JLabel jLabelCancel;
@@ -350,8 +403,10 @@ public class addBooking extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelSearch;
     private javax.swing.JLabel jLabelSession;
     private javax.swing.JList jListChildren;
+    private javax.swing.JList jListRooms;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextArea jTextAreaNotes;
     private javax.swing.JTextField jTextFieldChild;
     private javax.swing.JTextField jTextFieldDate;

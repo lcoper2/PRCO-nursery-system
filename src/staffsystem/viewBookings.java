@@ -21,17 +21,19 @@ public class viewBookings extends javax.swing.JFrame {
 
     Booking booking;
     BookingList bookingList;
+    Child child;
+    ChildList childList;
     DBConnection connect;
     
     ArrayList<BookingList> listOfBookings;
     
     int childID;
-    private Component frame;
     private int bookingIndex;
     private Object thisBooking;
     private String selectedBooking;
     private String[] bookingInfo;
     private String stringID;
+    int activeTab = 2;
     /**
      * Creates new form viewBookings
      */
@@ -46,10 +48,14 @@ public class viewBookings extends javax.swing.JFrame {
         
         setBookingList(id);
         searchBookingList(id);
+        this.childList = this.connect.viewAllChildren();
+        child = childList.getChildAt(id);
     }
     
     public void setBookingList(String id) throws SQLException{
         childID = Integer.parseInt(id);
+        this.childList = this.connect.viewAllChildren();
+        child = childList.getChildAt(id);
         
         bookingList = connect.getChildBookings(id);
         try{
@@ -86,7 +92,7 @@ public class viewBookings extends javax.swing.JFrame {
             this.bookingList = this.connect.getChildBookings(bookingInfo[4]);
 
             //set text boxes equal to booking selected
-            jTextFieldChild.setText(booking.getChildIDAsString());
+            jTextFieldChild.setText(child.getFirstName() + " " + child.getSurname());
             jTextFieldDate.setText(booking.getDate());
             jTextFieldSession.setText(booking.getSession());
             jTextAreaNotes.setText(booking.getNotes());
@@ -315,7 +321,7 @@ public class viewBookings extends javax.swing.JFrame {
         homePage home = null;
         this.dispose();
         try {
-            home = new homePage();
+            home = new homePage(activeTab);
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(viewBookings.class.getName()).log(Level.SEVERE, null, ex);
         }
